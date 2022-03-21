@@ -31,14 +31,12 @@ Things you may want to cover:
 |---------------------- |------- |-------------------------- |
 | nickname              | string | null: false               |
 | email                 | string | null: false, unique: true |
-| password              | string | null: false               |
-| password_conformation | string | null: false               |
+| encrypted_password    | string | null: false               |
 | family_name           | string | null: false               |
 | first_name            | string | null: false               |
 | family_name_kana      | string | null: false               |
 | first_name_kana       | string | null: false               |
-| birth_year            | string | null: false               |
-| birth_day             | string | null: false               |
+| birthday              | date   | null: false               |
 
 - has_many :items
 - has_many :orders
@@ -46,46 +44,47 @@ Things you may want to cover:
 
 ## items　テーブル
 
-| Column           |Type     | Options                        |
-|----------------- |-------- |------------------------------- |
-| name             | string  | null: false                    |
-| introduction     | text    | null: false                    |
-| item_category    | string  | null: false                    |
-| item_condition   | string  | null: false                    |
-| shipping_cost    | string  | null: false                    |
-| consignor_region | string  | null: false                    |
-| shipping_days    | integer | null: false                    |  
-| price            | integer | null: false                    |
-| user_id          | integer | null: false, foreign_key: true |
+| Column              | Type      | Options                        |
+|-----------------    |---------- |------------------------------- |
+| name                | string    | null: false                    |
+| introduction        | text      | null: false                    |
+| item_category_id    | integer   | null: false                    |
+| item_condition_id   | integer   | null: false                    |
+| shipping_cost_id    | integer   | null: false                    |
+| prefecture_id       | integer   | null: false                    |
+| shipping_days_id    | integer   | null: false                    |  
+| price               | integer   | null: false                    |
+| user                | references| null: false, foreign_key: true |
 
-- has_one    :items
-- belongs_to :users
+- has_one    :order
+- belongs_to :user
 
 
-## deliver_adresses　テーブル
+## deliver_addresses　テーブル
 
-| Column     | Type    | Options     |
-|----------- |-------- |------------ |
-| post_code  | integer | null: false |
-| prefecture | string  | null: false |
-| city       | string  | null: false |
-| adress1    | string  | null: false |
-| adress2    | string  |             |
-| telephone  | integer |             |
+| Column     | Type        | Options     |
+|----------- |------------ |------------ |
+| post_code  | string      | null: false |
+| prefecture | references  | null: false, foreign_key: true |
+| city       | string      | null: false |
+| address    | string      | null: false |
+| building   | string      |             |
+| telephone  | string      | null: false |
+| order      | references  | null: false, foreign_key: true |
 
-- belongs_to :orders
+- belongs_to :order
 
 
 ## orders　テーブル
 
-| Column  | Type    | Options                        |
-|-------- |-------- |------------------------------- |
-| user_id | integer | null: false, foreign_key: true |
-| item_id | integer | null: false, foreign_key: true |
+| Column| Type       | Options                        |
+|------ |----------- |------------------------------- |
+| user  | references | null: false, foreign_key: true |
+| item  | references | null: false, foreign_key: true |
 
-- belongs_to :users
-- belongs_to :items
-- has_one    : deliver_adresses
+- belongs_to :user
+- belongs_to :item
+- has_one    : deliver_address
 
 
 
