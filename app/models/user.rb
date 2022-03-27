@@ -19,4 +19,5 @@ class User < ApplicationRecord
     format: { with: /\A([ァ-ン]|ー)+\z/},
     presence: true
   validates :birthday, presence: true
+  validates :encrypted_password,:password,:password_confirmation,length:{minimum:7},format:{with: /(?=.[a-zA-Z])(?=.\d)[a-zA-Z\d]{7,}/}
 end
