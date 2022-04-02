@@ -9,7 +9,7 @@ class User < ApplicationRecord
             format: { with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/ },
             presence: true
   validates :first_name,
-            format: { with: /\A([ぁ-んァ-ン一-龥]|ー)+\z/ },
+            format: { with: /\A([ぁ-んァ-ン一-龥々]|ー)+\z/ },
             presence: true
   validates :family_name_kana,
             format: { with: /\A([ァ-ン]|ー)+\z/ },
