@@ -8,6 +8,7 @@ class Item < ApplicationRecord
   belongs_to :item_condition
   belongs_to :shipping_cost
   belongs_to :shipping_day
+  has_one :order
   
   
   validates :name, :introduction, :item_category, :item_condition, :shipping_cost, :shipping_day,

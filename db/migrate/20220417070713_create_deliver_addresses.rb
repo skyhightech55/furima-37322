@@ -7,8 +7,8 @@ class CreateDeliverAddresses < ActiveRecord::Migration[6.0]
       t.string :address, null: false
       t.string :building
       t.string :telephone, null: false
-      t.references :order, null: false, foreign_key: true
-      t.timestamps 
+      t.references :order, null: false
+      t.timestamps
     end
   end
 end
