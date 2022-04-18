@@ -13,4 +13,11 @@ class DonationAddress
     
   end
   validates :prefecture, numericality: {other_than: 0, message: "can't be blank"}
+
+  def save
+    
+    item = Item.create.create(user_id: user_id, item_id: item_id)
+    
+    Deliver_Address.create(post_code: post_code, prefecture: prefecture, city: city, address: address, building: building, telephone: telephone, order_id: order.id)
+  end
 end
