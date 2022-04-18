@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   def index
-    @deliver_addres = deliverAddress.new
+    @deliver_address = DeliverAddress.new
   end
 
   def create
