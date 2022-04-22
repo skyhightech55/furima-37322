@@ -41,9 +41,13 @@ ActiveRecord::Schema.define(version: 2022_04_17_070713) do
     t.string "building"
     t.string "telephone", null: false
     t.bigint "order_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "item_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["item_id"], name: "index_deliver_addresses_on_item_id"
     t.index ["order_id"], name: "index_deliver_addresses_on_order_id"
+    t.index ["user_id"], name: "index_deliver_addresses_on_user_id"
   end
 
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

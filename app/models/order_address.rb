@@ -11,9 +11,10 @@ class DonationAddress
     validates :user_id
     validates :item_id
     validates :telephone, format: {with: /\A\d{10,11}\z/, message: "is invalid"}
-    
   end
   validates :prefecture, numericality: {other_than: 1, message: "can't be blank"}
+
+  
 
   
 

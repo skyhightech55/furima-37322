@@ -8,6 +8,8 @@ class CreateDeliverAddresses < ActiveRecord::Migration[6.0]
       t.string :building
       t.string :telephone, null: false
       t.references :order, null: false
+      t.references :user, null: false
+      t.references :item, null: false
       t.timestamps
     end
   end
