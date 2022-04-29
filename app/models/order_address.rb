@@ -8,7 +8,7 @@ class OrderAddress
     validates :city
     validates :address
     validates :user_id
-    validates :item_id
+    
     validates :telephone, format: {with: /\A\d{10,11}\z/, message: "is invalid"}
   end
   validates :prefecture_id, numericality: {other_than: 1, message: "can't be blank"}
