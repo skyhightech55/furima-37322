@@ -15,6 +15,9 @@ RSpec.describe OrderAddress, type: :model do
         @order_address.building = ''
         expect(@order_address).to be_valid
       end
+      it "tokenがあれば保存ができること" do
+        expect(@order_address).to be_valid
+      end
     end
 
     context '内容に問題がある場合' do
@@ -52,6 +55,11 @@ RSpec.describe OrderAddress, type: :model do
         @order_address.telephone = 111
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include("Telephone is invalid")
+      end
+      it "tokenが空では登録できないこと" do
+        @order_address.token = nil
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include("Token can't be blank")
       end
     end
   end
